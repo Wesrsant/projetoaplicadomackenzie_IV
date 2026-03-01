@@ -12,4 +12,4 @@ dbt_venv/
 env.bak/
 venv.bak/
 .env.localrunner
-.database/
+database/
