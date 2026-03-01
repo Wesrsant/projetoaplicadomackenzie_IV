@@ -52,7 +52,7 @@ Este projeto utiliza **Git LFS** para gerenciar os arquivos CSV da ANATEL.
 Caso os arquivos na pasta `/database` apareçam como ponteiros de texto (apenas algumas linhas com IDs), execute o comando abaixo no terminal para baixar os dados reais:
 ```bash
 git lfs pull
-
+```
 ## 🔬 Premissas e Metodologia Inicial
 
 ### **Abordagem Metodológica**
