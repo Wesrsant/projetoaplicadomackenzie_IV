@@ -1,0 +1,15 @@
+.vscode
+.tool-versions
+.idea
+.user.yml
+profiles.yml
+.env
+.venv
+env/
+venv/
+ENV/
+dbt_venv/
+env.bak/
+venv.bak/
+.env.localrunner
+.database/
