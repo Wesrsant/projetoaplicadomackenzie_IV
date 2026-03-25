@@ -1,18 +1,9 @@
-# Manipulação de Dados
 pandas
 numpy
-
-# Visualização
 matplotlib
 seaborn
-
-# Estatística e Séries Temporais
 statsmodels
 scipy
 pmdarima
-
-# Machine Learning
 scikit-learn
-
-# Jupyter
 ipykernel
