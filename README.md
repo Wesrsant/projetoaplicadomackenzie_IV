@@ -9,12 +9,13 @@ O projeto foca na transição tecnológica das redes móveis e na redução do a
 ## 🎯 Objetivo do Projeto
 
 ### Objetivo Geral
-Realizar uma análise preditiva da expansão da cobertura móvel no Brasil, utilizando modelos de séries temporais para estimar a maturidade da rede 5G e o ciclo de vida das tecnologias legadas.
+Realizar uma análise técnica da evolução das redes móveis utilizando séries temporais para apoiar a tomada de decisão no contexto da expansão da conectividade e do ODS 9.
 
 ### Objetivos Específicos
-* Identificar padrões de crescimento na cobertura municipal e por setor censitário.
-* Comparar a velocidade de implementação do 5G em relação ao histórico do 4G.
-* Fornecer insights sobre áreas com déficit de infraestrutura digital para apoio a decisões estratégicas.
+* Coletar, tratar e explorar dados públicos da ANATEL relacionados à infraestrutura móvel (2G, 3G, 4G e 5G).
+* Aplicar técnicas de análise para identificar padrões históricos, sazonalidades e tendências de crescimento.
+* Desenvolver visualizações que facilitem a interpretação dos dados e a comunicação dos resultados.
+* Avaliar a evolução da cobertura em relação à população atendida, identificando desigualdades no acesso.
 
 ## 📊 Dataset Utilizado
 Os dados são provenientes do portal de Dados Abertos da **ANATEL**, especificamente o conjunto de dados de **Cobertura da Telefonia Móvel**.
@@ -41,24 +42,28 @@ Suporte à digitalização industrial (Indústria 4.0) através da previsão de 
 
 ## 📂 Estrutura de Pastas
 ```text
-├── database/           # Arquivos CSV brutos e processados da Anatel
-├── docs/               # Relatórios técnicos e documentação em PDF
-├── notebooks/          # Jupyter Notebooks (EDA, Pré-processamento e Modelagem)
-├── .gitignore          # Arquivos e pastas ignorados pelo controle de versão
-└── README.md           # Documentação principal do repositório
+├── database/        # Arquivos CSV originais da ANATEL (sem unificação) 
+├── docs/            # Relatórios técnicos, cronograma e documentação em PDF [cite: 453]
+├── output/          # Bases unificadas e otimizadas em formato GZIP (.csv.gz) [cite: 299]
+├── results/         # Imagens das séries temporais (ACF, PACF e Decomposição) 
+├── scripts/         # Jupyter Notebooks com as análises descritas no Pipeline [cite: 303]
+├── .gitignore       # Configuração de arquivos e pastas ignorados pelo Git
+├── requirements.txt # Lista de dependências Python para reprodução do projeto
+└── README.md        # Documentação principal e guia do repositório
 
-### 🛠️ Configuração de Dados (Git LFS)
-Este projeto utiliza **Git LFS** para gerenciar os arquivos CSV da ANATEL.
-Caso os arquivos na pasta `/database` apareçam como ponteiros de texto (apenas algumas linhas com IDs), execute o comando abaixo no terminal para baixar os dados reais:
-```bash
-git lfs pull
+### 🛠️ Otimização de Dados
+Devido ao volume total de dados brutos (aprox. 500MB), este projeto utiliza uma estratégia de compressão GZIP (.csv.gz). Esta técnica reduziu os arquivos em mais de 80%, eliminando a necessidade do Git LFS e permitindo o processamento eficiente diretamente na memória RAM.
+
 ```
 ## 🔬 Premissas e Metodologia Inicial
 
 ### **Abordagem Metodológica**
-
+O projeto adota um pipeline automatizado em Python para o saneamento de mais de 9,4 milhões de registros. A análise estatística utiliza o teste Augmented Dickey-Fuller (ADF) para validar a estacionariedade e a técnica de Decomposição Aditiva para isolar a tendência de crescimento tecnológico.
 
 ### **Premissas Técnicas**
+- Utilização de bibliotecas como pandas, statsmodels e matplotlib.
+- Foco na "memória curta" da série (Lag 1) para projeções estáveis e incrementais.
+- Avaliação de desigualdade digital através do cálculo do Índice de Gini e Curva de Lorenz.
 
 ## 👥 Equipe de Desenvolvimento
 
@@ -80,8 +85,9 @@ O projeto será desenvolvido em **4 etapas principais**:
 ## 📈 Entregas Esperadas
 
 Como resultado do projeto, esperamos desenvolver:
-
-
+- Pipeline robusto de tratamento de Big Data para telecomunicações.
+- Dashboards de visualização da evolução espacial e temporal da rede 5G.
+- Modelo preditivo para suporte a decisões estratégicas de infraestrutura digital.
 ---
 
 ## 📚 Referências
