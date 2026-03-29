@@ -43,18 +43,18 @@ Suporte à digitalização industrial (Indústria 4.0) através da previsão de 
 ## 📂 Estrutura de Pastas
 ```text
 ├── database/        # Arquivos CSV originais da ANATEL (sem unificação) 
-├── docs/            # Relatórios técnicos, cronograma e documentação em PDF [cite: 453]
-├── output/          # Bases unificadas e otimizadas em formato GZIP (.csv.gz) [cite: 299]
+├── docs/            # Relatórios técnicos e documentação em PDF 
+├── output/          # Bases unificadas e otimizadas em formato GZIP (.csv.gz)
 ├── results/         # Imagens das séries temporais (ACF, PACF e Decomposição) 
-├── scripts/         # Jupyter Notebooks com as análises descritas no Pipeline [cite: 303]
+├── scripts/         # Scripts com as análises descritas no Pipeline
 ├── .gitignore       # Configuração de arquivos e pastas ignorados pelo Git
 ├── requirements.txt # Lista de dependências Python para reprodução do projeto
 └── README.md        # Documentação principal e guia do repositório
 
-### 🛠️ Otimização de Dados
+```
+## 🛠️ Otimização de Dados
 Devido ao volume total de dados brutos (aprox. 500MB), este projeto utiliza uma estratégia de compressão GZIP (.csv.gz). Esta técnica reduziu os arquivos em mais de 80%, eliminando a necessidade do Git LFS e permitindo o processamento eficiente diretamente na memória RAM.
 
-```
 ## 🔬 Premissas e Metodologia Inicial
 
 ### **Abordagem Metodológica**
