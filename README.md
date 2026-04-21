@@ -52,18 +52,31 @@ Suporte à digitalização industrial (Indústria 4.0) através da previsão de 
 └── README.md        # Documentação principal e guia do repositório
 
 ```
-## 🛠️ Otimização de Dados
-Devido ao volume total de dados brutos (aprox. 500MB), este projeto utiliza uma estratégia de compressão GZIP (.csv.gz). Esta técnica reduziu os arquivos em mais de 80%, eliminando a necessidade do Git LFS e permitindo o processamento eficiente diretamente na memória RAM.
+## 🛠️ Implementação Técnica e Metodologia
 
-## 🔬 Premissas e Metodologia Inicial
+O projeto segue uma metodologia estruturada para garantir a reprodutibilidade e o rigor estatístico:
 
-### **Abordagem Metodológica**
-O projeto adota um pipeline automatizado em Python para o saneamento de mais de 9,4 milhões de registros. A análise estatística utiliza o teste Augmented Dickey-Fuller (ADF) para validar a estacionariedade e a técnica de Decomposição Aditiva para isolar a tendência de crescimento tecnológico.
+### 1. Normalização e Higienização de Dados
+* **Pipeline de Normalização**: Processamento automatizado das bases de Municípios e Setores Censitários.
+* **Limpeza com Regex**: Remoção de caracteres invisíveis, espaços e símbolos de percentagem, garantindo a conversão forçada para tipos numéricos (Float).
+* **Tratamento de Nulos**: Imputação estratégica com valor zero para manter a integridade dos cálculos matemáticos.
 
-### **Premissas Técnicas**
-- Utilização de bibliotecas como pandas, statsmodels e matplotlib.
-- Foco na "memória curta" da série (Lag 1) para projeções estáveis e incrementais.
-- Avaliação de desigualdade digital através do cálculo do Índice de Gini e Curva de Lorenz.
+### 2. Análise Exploratória (EDA) e Diagnóstico
+* **Validação de Granularidade**: Cruzamento de tendências entre a visão macro (municípios) e a visão micro (setores) para assegurar a consistência dos dados. A análise estatística utiliza o teste Augmented Dickey-Fuller (ADF) para validar a estacionariedade e a técnica de Decomposição Aditiva para isolar a tendência de crescimento tecnológico.
+* **Benchmark Tecnológico**: Comparação entre a maturidade do 4G e a rampa de adoção do 5G.
+* **Diagnóstico de Séries Temporais**: Teste de Estacionariedade (Augmented Dickey-Fuller) e análise de correlações (ACF/PACF).
+
+### 3. Modelagem Preditiva e Projeção
+* **Cenário Conservador**: Utilização de modelos de Holt-Winters para capturar a tendência linear de expansão.
+* **Cenário Acelerado (Proxy de Salto)**: Simulação baseada no comportamento histórico de adoção do 4G para prever o potencial real do 5G.
+
+### 4. Governança e Relatórios
+* **Resumos Executivos Automáticos**: Ao final de cada etapa do código, é gerado um relatório textual no console ("Output da análise"), consolidando métricas de qualidade, crescimento anual (YoY) e conclusões críticas.
+
+## ⚡ Otimização e Performance
+Para viabilizar o processamento de milhões de registros (especialmente na base de Setores) sem comprometer o armazenamento:
+* **Compactação Gzip**: Os ficheiros unificados são guardados no formato `.csv.gz`, o que reduz drasticamente o tamanho em disco e facilita o versionamento no GitHub.
+* **Eficiência de Memória**: Utilização de parâmetros como `low_memory=False` e seleção seletiva de colunas durante o carregamento inicial para acelerar o processamento.
 
 ## 👥 Equipe de Desenvolvimento
 
