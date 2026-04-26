@@ -45,7 +45,6 @@ Suporte à digitalização industrial (Indústria 4.0) através da previsão de 
 ├── database/        # Arquivos CSV originais da ANATEL (sem unificação) 
 ├── docs/            # Relatórios técnicos e documentação em PDF 
 ├── output/          # Bases unificadas e otimizadas em formato GZIP (.csv.gz)
-├── results/         # Imagens das séries temporais (ACF, PACF e Decomposição) 
 ├── scripts/         # Scripts com as análises descritas no Pipeline
 ├── .gitignore       # Configuração de arquivos e pastas ignorados pelo Git
 ├── requirements.txt # Lista de dependências Python para reprodução do projeto
